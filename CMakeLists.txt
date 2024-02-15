@@ -10,12 +10,17 @@ project(exp_assignment3)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
-  erl2
+  std_msgs
+  geometry_msgs 
+  sensor_msgs
+  nav_msgs 
+  tf 
+  actionlib_msgs
   message_generation
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+ find_package(OpenCV REQUIRED)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -48,17 +53,19 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
+ add_message_files(
+    FILES
 #   Message1.msg
 #   Message2.msg
-# )
+    BallInfoMsg.msg
+ )
 
 ## Generate services in the 'srv' folder
- add_service_files(
-   FILES
-   Marker.srv
- )
+# add_service_files(
+#   FILES
+#   Service1.srv
+#   Service2.srv
+# )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -69,8 +76,10 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate added messages and services with any dependencies listed here
  generate_messages(
-   DEPENDENCIES
-   erl2  # Or other packages containing msgs
+    DEPENDENCIES
+#   std_msgs  # Or other packages containing msgs
+    std_msgs 
+    geometry_msgs
  )
 
 ################################################
@@ -106,8 +115,8 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES exp_assignment3
 #  CATKIN_DEPENDS roscpp rospy
-#  DEPENDS system_lib
-)
+   DEPENDS OpenCV 
+) 
 
 ###########
 ## Build ##
@@ -133,7 +142,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
- add_executable(final_oracle src/simulation.cpp)
+# add_executable(${PROJECT_NAME}_node src/exp_assignment3_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -143,12 +152,12 @@ include_directories(
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
- add_dependencies(final_oracle ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
- target_link_libraries(final_oracle
-   ${catkin_LIBRARIES}
- )
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
