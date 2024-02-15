@@ -1,0 +1,23 @@
+digraph G {
+node [shape=box];
+"link_chassis" [label="link_chassis"];
+"hokuyo_link" [label="hokuyo_link"];
+"link_left_wheel" [label="link_left_wheel"];
+"link_right_wheel" [label="link_right_wheel"];
+"neck" [label="neck"];
+"head" [label="head"];
+"camera_link" [label="camera_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"link_chassis" -> "hokuyo_joint" [label="xyz: 0.26 0 0.025 \nrpy: 0 -0 0"]
+"hokuyo_joint" -> "hokuyo_link"
+"link_chassis" -> "joint_left_wheel" [label="xyz: -0.05 -0.15 0 \nrpy: 0 -0 0"]
+"joint_left_wheel" -> "link_left_wheel"
+"link_chassis" -> "joint_right_wheel" [label="xyz: -0.05 0.15 0 \nrpy: 0 -0 0"]
+"joint_right_wheel" -> "link_right_wheel"
+"link_chassis" -> "neck_joint" [label="xyz: 0.2 0 0 \nrpy: 0 -0 0"]
+"neck_joint" -> "neck"
+"neck" -> "head_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"head_joint" -> "head"
+"head" -> "camera_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"camera_joint" -> "camera_link"
+}
