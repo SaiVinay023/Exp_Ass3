@@ -1,6 +1,10 @@
-# Exp_Ass3
 
-# Assignment 3 - Experimental Robotics Laboratory 
+
+# Room_Navigating_Robot-ROS/SLAM/NAVSTACK
+
+# Project Overview:
+The Colorful Canine Explorer is an innovative ROS package that simulates a dynamic dog robot navigating through an intricately designed environment divided into six distinct rooms, each identified by a unique colored ball. The robot employs advanced behavior models—normal, sleep, play, and find—managed through a finite state machine architecture (using SMACH).
+
 # Introduction 
 The ROS package simulates a dog robot which can move in an environment divided into 6 rooms, each room is associated to a different color ball: 
 
